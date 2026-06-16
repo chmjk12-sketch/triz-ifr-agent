@@ -8,4 +8,4 @@ from src.api.v1.endpoints import router as solve_router
 router = APIRouter()
 
 # 注册求解路由
-router.include_router(solve_router, prefix="/v1", tags=["TRIZ IFR 求解"])
+router.include_router(solve_router, tags=["TRIZ IFR 求解"])
