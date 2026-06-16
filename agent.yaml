@@ -1,0 +1,25 @@
+name: triz-ifr-agent
+version: 1.0.0
+description: >
+  TRIZ IFR 通用逆向收敛专家。基于经典 TRIZ 倒推思维，
+  从最终理想解 (IFR) 顶点出发，扫描外部免费/低成本资源，
+  逆向折返寻找中间最优可行方案。
+
+business_type: analysis
+collaboration:
+  can_request:
+    - web-search-agent      # 需要外部资源搜索时
+    - code-analysis-agent   # 需要代码/算法分析时
+    - data-processing-agent # 需要数据处理时
+  can_be_requested_by:
+    - any-agent
+
+model:
+  default: deepseek-chat
+  fallback: gpt-4o
+
+endpoints:
+  health: /health
+  metrics: /metrics
+  api: /api/v1/solve
+  mcp_tools: /mcp/tools
