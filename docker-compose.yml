@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  triz-ifr-agent:
+    build: .
+    container_name: triz-ifr-agent_app
+    ports:
+      - "3000:80"
+    environment:
+      - AI_MODEL=deepseek-chat
+      - AI_API_KEY=${AI_API_KEY}
+      - AI_BASE_URL=https://api.deepseek.com/v1
+      - CP_API_KEY=${CP_API_KEY}
+      - CP_BASE_URL=https://administrator.chmjk67.top
+      - LOG_LEVEL=INFO
+    networks:
+      - caddy-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+networks:
+  caddy-net:
+    external: true
