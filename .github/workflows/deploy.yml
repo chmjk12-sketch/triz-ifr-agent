@@ -7,7 +7,7 @@ on:
 
 env:
   APP_NAME: triz-ifr-agent
-  APP_PORT: "3006"
+  APP_PORT: "3007"
   REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
   REGISTRY_NAMESPACE: chmjk67
   DOMAIN: chmjk67.top
