@@ -209,6 +209,9 @@ if os.path.isdir(STATIC_DIR):
     @app.get("/{full_path:path}")
     async def serve_spa(full_path: str):
         """SPA fallback: 所有非 API 路径返回 index.html"""
+        if full_path.startswith("api/") or full_path.startswith("health") or full_path.startswith("metrics") or full_path.startswith("mcp/"):
+            from fastapi.responses import JSONResponse
+            return JSONResponse(status_code=404, content={"detail": "Not Found"})
         file_path = os.path.join(STATIC_DIR, full_path)
         if os.path.isfile(file_path):
             return FileResponse(file_path)
