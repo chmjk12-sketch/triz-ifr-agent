@@ -1095,7 +1095,7 @@ async def solve_triz_ifr(
 
         node4 = Node4ActionablePlan(
             acquisition_sources=[
-                {"source": r["source"], "url": r["url"]}
+                {"category": r["category"], "name": r["name"], "url": r["url"]}
                 for r in resources[:5] if r.get("url")
             ],
             extraction_algorithms=[
